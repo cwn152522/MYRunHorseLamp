@@ -33,14 +33,6 @@
                         <action selector="onClickStop:" destination="-1" eventType="touchUpInside" id="Wla-Bn-ndi"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FFc-GQ-JMB">
-                    <rect key="frame" x="232" y="318" width="31" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="stop"/>
-                    <connections>
-                        <action selector="onClickStop:" destination="-1" eventType="touchUpInside" id="p3J-qk-1Z5"/>
-                    </connections>
-                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7lA-R3-G2h">
                     <rect key="frame" x="161" y="264" width="53" height="30"/>
                     <state key="normal" title="request"/>
