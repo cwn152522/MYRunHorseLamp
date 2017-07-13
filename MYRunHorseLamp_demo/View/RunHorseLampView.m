@@ -76,8 +76,10 @@
 }
 
 - (void)startRuning:(NSString *)text{
-    if([text length] == 0)
+    if([text length] == 0){
         [self stopRuning];
+        return;
+    }
     
     [self layoutIfNeeded];
     self.firstLabelLeft.constant = self.frame.size.width;
