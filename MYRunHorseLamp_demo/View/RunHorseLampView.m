@@ -28,7 +28,7 @@
 - (instancetype)initWithFrame:(CGRect)frame{
     if(self = [super initWithFrame:frame]){
         self.layer.masksToBounds = YES;
-        self.duration_perwidth = 3.0f;
+        self.duration_perwidth = 5.0f;
         [self addSubview:self.firstLabel];
         [self addSubview:self.secondLabel];
         
@@ -46,26 +46,24 @@
 }
 
 - (void)addAnimation{
-    @synchronized (self) {
-        CGFloat left = self.firstLabelLeft.constant;
-        [self layoutIfNeeded];
-        
-        __weak typeof(self) weakSelf = self;
-        weakSelf.firstLabelLeft.constant =  -weakSelf.firstLabelWidth.constant;
-        [UIView animateWithDuration:self.duration delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
-            [weakSelf layoutIfNeeded];
-        } completion:^(BOOL finished) {
-            if(weakSelf.removeAnimation == NO){
-                weakSelf.duration = self.firstLabelWidth.constant * 1.0 / self.frame.size.width * self.duration_perwidth;
-                weakSelf.firstLabelLeft.constant = 0;
-                [weakSelf addAnimation];
-            }else{
-                weakSelf.firstLabelLeft.constant = left;
-                weakSelf.firstLabel.text = @"";
-                weakSelf.secondLabel.text = @"";
-            }
-        }];
-    }
+    CGFloat left = self.firstLabelLeft.constant;
+    [self layoutIfNeeded];
+    
+    __weak typeof(self) weakSelf = self;
+    weakSelf.firstLabelLeft.constant =  -weakSelf.firstLabelWidth.constant;
+    [UIView animateWithDuration:self.duration delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+        [weakSelf layoutIfNeeded];
+    } completion:^(BOOL finished) {
+        if(weakSelf.removeAnimation == NO){
+            weakSelf.duration = weakSelf.firstLabelWidth.constant * 1.0 / weakSelf.frame.size.width * weakSelf.duration_perwidth;
+            weakSelf.firstLabelLeft.constant = 0;
+            [weakSelf addAnimation];
+        }else{
+            weakSelf.firstLabelLeft.constant = left;
+            weakSelf.firstLabel.text = @"";
+            weakSelf.secondLabel.text = @"";
+        }
+    }];
 }
 
 - (void)startRuning:(NSString *)text{
@@ -75,6 +73,11 @@
     [self layoutIfNeeded];
     self.firstLabelLeft.constant = self.frame.size.width;
     
+    
+    [self performSelector:@selector(delayRuning:) withObject:text afterDelay:0.33];
+}
+
+- (void)delayRuning:(NSString *)text{//延时，等上一个结束
     self.firstLabel.text = [text stringByAppendingString:@"            "];
     self.secondLabel.text = [text stringByAppendingString:@"            "];;
     
@@ -96,7 +99,8 @@
 - (UILabel *)firstLabel{
     if(!_firstLabel){
         _firstLabel = [[UILabel alloc] init];
-        _firstLabel.font = [UIFont systemFontOfSize:15];
+        _firstLabel.font = [UIFont systemFontOfSize:14];
+        _firstLabel.textColor = [UIColor lightGrayColor];
     }
     return _firstLabel;
 }
@@ -104,21 +108,10 @@
 - (UILabel *)secondLabel{
     if(!_secondLabel){
         _secondLabel = [[UILabel alloc] init];
-        _secondLabel.font = [UIFont systemFontOfSize:15];
+        _secondLabel.font = [UIFont systemFontOfSize:14];
+        _secondLabel.textColor = [UIColor lightGrayColor];
     }
     return _secondLabel;
 }
-
-//    scrollLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,100,self.view.frame.size.width, 44)];
-//    scrollLabel.text = @"放假啊生动的风景哦";
-//    [self.view addSubview:scrollLabel];
-//
-//
-//    secondLabel = [[UILabel alloc] initWithFrame:CGRectMake(scrollLabel.frame.origin.x+scrollLabel.frame.size.width, scrollLabel.frame.origin.y, scrollLabel.frame.size.width, scrollLabel.frame.size.height)];
-//    secondLabel.font = scrollLabel.font;
-//    secondLabel.text = scrollLabel.text;
-//    [self.view addSubview:secondLabel];
-//
-//    [self addAnimation];
 
 @end
