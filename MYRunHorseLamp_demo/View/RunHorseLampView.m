@@ -65,8 +65,7 @@
             if(weakSelf.appIsActive == YES){//不正常被中断，需要重启
                 if([weakSelf.firstLabel.text length] > 0)
                     [weakSelf startRuning:weakSelf.firstLabel.text];
-            }else
-                [weakSelf stopRuning];
+            }
         }else{
             weakSelf.duration = weakSelf.firstLabelWidth.constant * 1.0 / weakSelf.frame.size.width * weakSelf.duration_perwidth;
             weakSelf.firstLabelLeft.constant = 0;
@@ -109,7 +108,6 @@
 
 - (void)applicationWillResignActive{
     _appIsActive = NO;
-    [self stopRuning];
 }
 
 - (void)applicationDidBecomeActive{
