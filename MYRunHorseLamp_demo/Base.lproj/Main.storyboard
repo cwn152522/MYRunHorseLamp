@@ -1,12 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Tfk-in-bPm">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Tfk-in-bPm">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -37,41 +36,7 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4B8-GK-VVF">
-                                <rect key="frame" x="16" y="268.5" width="343" height="30"/>
-                                <state key="normal" title="正常模式"/>
-                                <connections>
-                                    <action selector="onClickNormalState:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kX9-AK-Rxf"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MHS-5Z-d67">
-                                <rect key="frame" x="16" y="313.5" width="343" height="30"/>
-                                <state key="normal" title="立即模式"/>
-                                <connections>
-                                    <action selector="onClickImediatelyState:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xb7-e7-xRj"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="提示：正常模式下跑马灯更换文本需等上一个文本跑完；立即模式下跑马灯更换文本会立即生效" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ecm-Mj-ekf">
-                                <rect key="frame" x="16" y="590.5" width="343" height="31.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="4B8-GK-VVF" secondAttribute="trailing" id="0jr-JJ-6NF"/>
-                            <constraint firstItem="MHS-5Z-d67" firstAttribute="height" secondItem="4B8-GK-VVF" secondAttribute="height" id="GS7-xj-aqb"/>
-                            <constraint firstItem="Ecm-Mj-ekf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="LoB-oi-mJi"/>
-                            <constraint firstItem="MHS-5Z-d67" firstAttribute="top" secondItem="4B8-GK-VVF" secondAttribute="bottom" constant="15" id="NkO-L4-Xpo"/>
-                            <constraint firstItem="4B8-GK-VVF" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Wir-X7-ilH"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Ecm-Mj-ekf" secondAttribute="bottom" constant="45" id="Ygk-c8-EFd"/>
-                            <constraint firstItem="MHS-5Z-d67" firstAttribute="width" secondItem="4B8-GK-VVF" secondAttribute="width" id="hG6-Wf-PLk"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Ecm-Mj-ekf" secondAttribute="trailing" id="mZ6-tV-HfP"/>
-                            <constraint firstItem="MHS-5Z-d67" firstAttribute="centerX" secondItem="4B8-GK-VVF" secondAttribute="centerX" id="vPs-m2-jL9"/>
-                            <constraint firstItem="4B8-GK-VVF" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-50" id="xiu-2n-tkw"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="跑马灯" id="8hc-hI-Ckd"/>
                 </viewController>

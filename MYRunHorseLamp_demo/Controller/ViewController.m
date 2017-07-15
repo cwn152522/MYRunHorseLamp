@@ -7,10 +7,11 @@
 //
 
 #import "ViewController.h"
-#import "RunHorseLamp_Normal.h"
-#import "RunHorseLamp_Imediately.h"
+#import "RunHorseLampView.h"
 
 @interface ViewController ()
+
+@property (strong, nonatomic) RunHorseLampView *lampView;
 
 @end
 
@@ -18,20 +19,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.lampView = [[RunHorseLampView alloc] initWithFrame:CGRectMake(0, 200, CGRectGetWidth([UIScreen mainScreen].bounds), 20)];
+    [self.view addSubview:self.lampView];
+    
+    [self.lampView startRuning:@"阿胶犯上作乱大家佛大四的回复打算返回 i 啊互粉苏打粉和 i 吴虹飞哇"];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
-#pragma mark 事件处理
-
-- (IBAction)onClickNormalState:(UIButton *)sender {
-    RunHorseLamp_Normal *vc = [[RunHorseLamp_Normal alloc] initWithNibName:@"RunHorseLamp_Normal" bundle:nil];
-    vc.title = @"跑马灯 - 正常模式";
-    [self.navigationController pushViewController:vc animated:YES];
-}
-
-- (IBAction)onClickImediatelyState:(UIButton *)sender {
-    RunHorseLamp_Imediately *vc = [[RunHorseLamp_Imediately alloc] initWithNibName:@"RunHorseLamp_Imediately" bundle:nil];
-    vc.title = @"跑马灯 - 立即模式";
-    [self.navigationController pushViewController:vc animated:YES];;
-}
 @end
