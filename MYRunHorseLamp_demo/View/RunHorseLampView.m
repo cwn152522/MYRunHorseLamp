@@ -88,8 +88,8 @@
 }
 
 - (void)delayRuning:(NSString *)text{//延时，等上一个结束
-    self.firstLabel.text = [text stringByAppendingString:@"            "];
-    self.secondLabel.text = [text stringByAppendingString:@"            "];;
+    self.firstLabel.text = text;
+    self.secondLabel.text = text;
     
     CGSize size = [self.firstLabel sizeThatFits:CGSizeMake(self.frame.size.width, self.frame.size.height)];
     self.firstLabelWidth.constant = size.width >= self.frame.size.width ? size.width : self.frame.size.width;
