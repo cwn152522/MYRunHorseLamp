@@ -11,7 +11,7 @@
 @interface RunHorseLampView : UIView
 
 /**
- 移动一个单位宽度文字所需的时间，默认为3秒
+ 移动一个单位宽度文字所需的时间，默认为5秒
  */
 @property (assign, nonatomic) CGFloat duration_perwidth;
 

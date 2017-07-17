@@ -32,14 +32,14 @@
 - (instancetype)initWithFrame:(CGRect)frame{
     if(self = [super initWithFrame:frame]){
         self.layer.masksToBounds = YES;
-        self.duration_perwidth = 5.0f;
+        self.duration_perwidth = 8.0f;
         self.appIsActive = YES;
         [self addSubview:self.firstLabel];
         [self addSubview:self.secondLabel];
         
         __weak typeof(self) weakSelf = self;
         [self.firstLabel cwn_makeConstraints:^(UIView *maker) {
-            weakSelf.firstLabelLeft = [maker.leftToSuper(self.frame.size.width) lastConstraint];
+            weakSelf.firstLabelLeft = [maker.leftToSuper(0) lastConstraint];
             weakSelf.firstLabelWidth =  [maker.topToSuper(0).bottomToSuper(0).width(self.frame.size.width) lastConstraint];
         }];
         
@@ -81,21 +81,19 @@
     }
     
     [self layoutIfNeeded];
-    self.firstLabelLeft.constant = self.frame.size.width;
+    self.firstLabelLeft.constant = 0;
     
+    self.firstLabel.text = text;
+    self.secondLabel.text = text;
     
-    [self performSelector:@selector(delayRuning:) withObject:text afterDelay:0.33];
-}
-
-- (void)delayRuning:(NSString *)text{//延时，等上一个结束
-    self.firstLabel.text = [text stringByAppendingString:@"            "];
-    self.secondLabel.text = [text stringByAppendingString:@"            "];;
-    
+    [self performSelector:@selector(delayRuning:) withObject:text afterDelay:0.8];
     CGSize size = [self.firstLabel sizeThatFits:CGSizeMake(self.frame.size.width, self.frame.size.height)];
     self.firstLabelWidth.constant = size.width >= self.frame.size.width ? size.width : self.frame.size.width;
     
     self.duration = self.firstLabelWidth.constant * 2.0 / self.frame.size.width * self.duration_perwidth;
-    
+}
+
+- (void)delayRuning:(NSString *)text{//延时，等上一个结束
     [self addAnimation];
 }
 
