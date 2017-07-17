@@ -66,10 +66,16 @@
                 if([weakSelf.firstLabel.text length] > 0)
                     [weakSelf startRuning:weakSelf.firstLabel.text];
             }
-        }else{
-            weakSelf.duration = weakSelf.firstLabelWidth.constant * 1.0 / weakSelf.frame.size.width * weakSelf.duration_perwidth;
-            weakSelf.firstLabelLeft.constant = 0;
-            [weakSelf addAnimation];
+        }else{//正常结束，递归动画
+            CALayer *layer = weakSelf.firstLabel.layer.presentationLayer;
+            CGRect frame = [layer frame];
+            
+            if(CGRectGetMinX(frame) == -_firstLabelWidth.constant){
+                weakSelf.duration = weakSelf.firstLabelWidth.constant * 1.0 / weakSelf.frame.size.width * weakSelf.duration_perwidth;
+                weakSelf.firstLabelLeft.constant = 0;
+                [weakSelf addAnimation];
+            }else{
+            }
         }
     }];
 }
@@ -86,11 +92,12 @@
     self.firstLabel.text = text;
     self.secondLabel.text = text;
     
-    [self performSelector:@selector(delayRuning:) withObject:text afterDelay:0.8];
     CGSize size = [self.firstLabel sizeThatFits:CGSizeMake(self.frame.size.width, self.frame.size.height)];
     self.firstLabelWidth.constant = size.width >= self.frame.size.width ? size.width : self.frame.size.width;
     
     self.duration = self.firstLabelWidth.constant * 2.0 / self.frame.size.width * self.duration_perwidth;
+    
+    [self performSelector:@selector(delayRuning:) withObject:text afterDelay:0.44];
 }
 
 - (void)delayRuning:(NSString *)text{//延时，等上一个结束
@@ -98,8 +105,12 @@
 }
 
 - (void)stopRuning{
+    //清空文本
     self.firstLabel.text = @"";
     self.secondLabel.text = @"";
+    
+    //移除所有动画
+    [self.layer removeAllAnimations];
 }
 
 #pragma mark - 监听事件处理
@@ -112,6 +123,12 @@
     _appIsActive = YES;
     if([[self.firstLabel text] length] > 0){
         [self startRuning:self.firstLabel.text];
+    }
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    if(self.RunHourseLampViewClickBlock){
+        self.RunHourseLampViewClickBlock();
     }
 }
 
