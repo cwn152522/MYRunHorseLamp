@@ -4,7 +4,7 @@
 //
 //  Created by 伟南 陈 on 2017/3/30.
 //  Copyright © 2017年 chenweinan. All rights reserved.
-//
+//A
 
 #import <UIKit/UIKit.h>
 
@@ -20,10 +20,12 @@
  */
 @property (copy, nonatomic) void(^RunHourseLampViewClickBlock)();
 
-/**
- * 开始动画
+
+/*
+ 开始动画
+ @param 跑马灯文本，支持纯文本和富文本
  */
-- (void)startRuning:(NSString *)text;
+- (void)startRuning:(id)text;
 
 /**
  * 结束动画
